@@ -87,7 +87,6 @@ sudo echo "output { stdout { } }" >> test.conf
 
 sudo service logstash configtest
 
-sudo service logstash restart
 
 sudo update-rc.d logstash defaults 96 9
 
