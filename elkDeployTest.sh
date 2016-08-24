@@ -1,5 +1,9 @@
+if [ "${UID}" -ne 0 ];
+then
+    echo "You must be root to run this program." >&2
+    exit 3
+fi
 #install java8
-
 echo "begin install"
 logger "begin install"
 sudo add-apt-repository -y ppa:webupd8team/java
