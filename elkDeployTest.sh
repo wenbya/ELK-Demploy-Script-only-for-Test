@@ -60,8 +60,8 @@ sudo apt-get update
 sudo apt-get -y install kibana
 
 #configure kibana
-sudo echo "server.host: "MyUbuntuVM"" >> /opt/kibana/config/kibana.yml
-sudo echo "elasticsearch.uri: "http://MyUbuntuVM:9200"" >> /opt/kibana/config/kibana.yml
+sudo echo "server.host: 'MyUbuntuVM' >> /opt/kibana/config/kibana.yml
+sudo echo "elasticsearch.uri: 'http://MyUbuntuVM:9200' >> /opt/kibana/config/kibana.yml
 
 
 sudo update-rc.d kibana defaults 96 9
