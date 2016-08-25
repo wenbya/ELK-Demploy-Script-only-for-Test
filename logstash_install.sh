@@ -29,14 +29,13 @@ log()
 	logger "$1"
 }
 
-#Loop through options passed
-while getopts :e optname; do
+#Loop through options passed  simply set configuration as Parameter
+while getopts e: optname; do
     log "Option $optname set with value ${OPTARG}"
   case $optname in
     e)  #set the encoded configuration string
 	  log "Setting the encoded configuration string"
-      CONF_FILE_ENCODED_STRING="${OPTARG}"
-      USE_CONF_FILE_FROM_ENCODED_STRING="true"
+      CONF_FILE_ENCODED_STRING=${OPTARG}
       ;;
     \?) #unrecognized option - show help
       echo -e \\n"Option -${BOLD}$OPTARG${NORM} not allowed."
@@ -69,16 +68,14 @@ sudo apt-get update
 
 sudo apt-get install logstash
 
-# Install User Configuration from encoded string
-if [ ! -z $USE_CONF_FILE_FROM_ENCODED_STRING ] 
-then
-  log "Decoding configuration string"
-  log "$CONF_FILE_ENCODED_STRING"
-  echo $CONF_FILE_ENCODED_STRING > logstash.conf.encoded
-  DECODED_STRING=$(base64 -d logstash.conf.encoded)
-  log "$DECODED_STRING"
-  echo $DECODED_STRING > ~/logstash.conf
-fi
+# Install User Configuration from encoded string 
+# The configuration file is in /etc/logstash/logstash.conf
+log "Decoding configuration string"
+log "$CONF_FILE_ENCODED_STRING"
+echo $CONF_FILE_ENCODED_STRING > logstash.conf.encoded
+DECODED_STRING=$(base64 -d logstash.conf.encoded)
+log "$DECODED_STRING"
+echo $DECODED_STRING > ~/logstash.conf
 
 # Install logstash_plugin for Azure such logstash-input-azureblob | logstash-input-azureeventhub
 # Do it latter
