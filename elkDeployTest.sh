@@ -60,7 +60,7 @@ sudo apt-get -y install kibana
 #configure kibana
 # take care of the server.host name  
 sudo echo "server.host: 'elkSimple'" >> /opt/kibana/config/kibana.yml
-sudo echo "elasticsearch.uri: 'http://elkSimple:9200'" >> /opt/kibana/config/kibana.yml
+sudo echo "elasticsearch.url: 'http://elkSimple:9200'" >> /opt/kibana/config/kibana.yml
 sudo update-rc.d kibana defaults 96 9
 sudo service kibana start
 
