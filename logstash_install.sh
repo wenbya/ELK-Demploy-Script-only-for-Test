@@ -57,7 +57,9 @@ echo "java8 has been installed"
 log "java8 has been installed"
 
 # Install Logstash
-
+# The Logstash package is available from the same repository as Elasticsearch . Install the public  key.
+# Create the logstash source list
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "begin to install logstash"
 logger "begin to install logstash"
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
