@@ -18,3 +18,7 @@ output {
 
 converted to encodedConfigString "aW5wdXQgIHsgICBzdGRpbiB7fSB9IG91dHB1dCB7ICAgc3Rkb3V0IHsgY29kZWMgPT4gcnVieWRlYnVnIH0gfQ=="
 you can change your own configuration into encodedConfigString as a parameter in logstashParameter.json
+
+
+3.
+In elkDeployTest.sh the VM name has been fix into "elkSimple" for convenience
