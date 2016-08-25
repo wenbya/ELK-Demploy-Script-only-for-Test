@@ -196,7 +196,7 @@
                 "typeHandlerVersion": "1.2",
                 "settings": {
                     "fileUris": [ "https://raw.githubusercontent.com/wenboyang214/ELK-Demploy-Script-only-for-Test/master/logstash_install.sh" ],
-                    "commandToExecute": "sudo bash logstash_install.sh -e parameters('encodedConfigString')"
+                    "commandToExecute":  "[concat('sudo bash logstash_install.sh -e ', parameters('encodedConfigString'))]"
                 }
             }
         }
