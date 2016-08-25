@@ -22,3 +22,7 @@ you can change your own configuration into encodedConfigString as a parameter in
 
 3.
 In elkDeployTest.sh the VM name has been fix into "elkSimple" for convenience
+
+4.
+you need to reboot the logstash vm. so that you can start the logstash service.
+even though I have set the service to start in the logstash_install.sh .I don't know the reason for it
