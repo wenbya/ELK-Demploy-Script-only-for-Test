@@ -26,6 +26,7 @@ help()
 log()
 {
 	echo "$1"
+	logger "$1"
 }
 
 #Loop through options passed
