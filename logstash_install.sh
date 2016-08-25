@@ -58,6 +58,13 @@ log "java8 has been installed"
 
 # Install Logstash
 
+echo "begin to install logstash"
+logger "begin to install logstash"
+echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
+
+sudo apt-get update
+
+sudo apt-get install logstash
 
 # Install User Configuration from encoded string
 if [ ! -z $USE_CONF_FILE_FROM_ENCODED_STRING ] 
