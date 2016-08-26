@@ -53,7 +53,7 @@ sudo echo "http.port: 9200" >> /etc/elasticsearch/elasticsearch.yml
 # configure elasticsearch heap
 log "elasticsearch.yml has been configured . The elasticsearch heap begin to configure"
 es_heap_size=$(free -m |grep Mem | awk '{if ($2/2 >31744)  print 31744;else print $2/2;}')
-sudo printf "\nES_HEAP_SIZE=%sm\n" $es_heap_size >> /etc/default/elasticseach
+sudo printf "\nES_HEAP_SIZE=%sm\n" $es_heap_size >> /etc/default/elasticsearch
 sudo printf "MAX_LOCKED_MEMORY=unlimited\n" >> /etc/default/elasticsearch
 sudo echo "elasticsearch - nofile 65536" >> /etc/security/limits.conf
 sudo echo "elasticsearch - memlock unlimited" >> /etc/security/limits.conf
