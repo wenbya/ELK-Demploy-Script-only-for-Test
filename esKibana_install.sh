@@ -8,6 +8,23 @@ log()
 	echo "$1"
 	logger "$1"
 }
+# Set the VM name for the elasticsearch network.host 
+# Set the host name instead of internal ip
+while getopts n: optname; do
+    log "Option $optname set with value ${OPTARG}"
+  case $optname in
+    n)  #set the encoded configuration string
+	  log "Setting the VM Name"
+      VMNAME=${OPTARG}
+      ;;
+    \?) #unrecognized option - show help
+      echo -e \\n"Option -${BOLD}$OPTARG${NORM} not allowed."
+      help
+      exit 2
+      ;;
+  esac
+done
+
 #install java8
 log "begin install java8"
 sudo add-apt-repository -y ppa:webupd8team/java
@@ -31,7 +48,7 @@ sudo apt-get -y install elasticsearch
 
 # configure the elasticsearch
 sudo echo "bootstrap.mlockall: true" >> /etc/elasticsearch/elasticsearch.yml
-sudo echo "network.host: elkSimple" >> /etc/elasticsearch/elasticsearch.yml
+sudo echo "network.host: $VMNAME" >> /etc/elasticsearch/elasticsearch.yml
 sudo echo "http.port: 9200" >> /etc/elasticsearch/elasticsearch.yml
 # configure elasticsearch heap
 log "elasticsearch.yml has been configured . The elasticsearch heap begin to configure"
@@ -68,8 +85,8 @@ sudo apt-get -y install kibana
 
 #configure kibana
 # take care of the server.host name  
-sudo echo "server.host: 'elkSimple'" >> /opt/kibana/config/kibana.yml
-sudo echo "elasticsearch.url: 'http://elkSimple:9200'" >> /opt/kibana/config/kibana.yml
+sudo echo "server.host: '$VMNAME'" >> /opt/kibana/config/kibana.yml
+sudo echo "elasticsearch.url: 'http://$VMNAME:9200'" >> /opt/kibana/config/kibana.yml
 sudo update-rc.d kibana defaults 96 9
 sudo service kibana start
 
