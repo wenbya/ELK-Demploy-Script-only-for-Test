@@ -93,7 +93,7 @@ configure_elasticsearch()
 	discovery_endpoints=$(get_discovery_endpoints $starting_discovery_endpoint $cluster_node_count)
 	echo "Setting ES discovery endpoints to $discovery_endpoints"
 	echo "discovery.zen.ping.unicast.hosts: $discovery_endpoints" >> /root/elasticsearch.yml
-#	echo "path.data: $datapath_config" >> /root/elasticsearch.yml
+	echo "path.data: $datapath_config" >> /root/elasticsearch.yml
 	declare -i minimum_master_nodes=$(((cluster_node_count / 2) + 1))
 	echo "discovery.zen.minimum_master_nodes: $minimum_master_nodes" >> /root/elasticsearch.yml
 	echo "gateway.recover_after_time: 1m" >> /root/elasticsearch.yml
@@ -150,9 +150,9 @@ install_kibana()
 # configure data disks for Elasticsearch
 # you must use fileUri vm-disk-utils-0.1.sh
 ##
-#log "setting up data disk"
-#bash vm-disk-utils-0.1.sh
-#log "disk is OK"
+log "setting up data disk"
+bash vm-disk-utils-0.1.sh
+log "disk is OK"
 
 #install java
 log "begin to install java8"
@@ -163,25 +163,25 @@ log "begin to install elastcisearch"
 install_elasticsearch
 
 #elastcisearch Datapath set
-#datapath_config=""
-#if [ -d '/datadisks' ]; then
-#    for disk_id in `find /datadisks/ -mindepth 1 -maxdepth 1 -type d`
-#    do
-#        # Configure disk permissions and folder for storage
-#        # We rely on ES default user name & group (elasticsearch)
-#        mkdir -p "${disk_id}/elasticsearch/data"
-#        chown -R elasticsearch:elasticsearch "${disk_id}/elasticsearch"
-#        chmod 755 "${disk_id}/elasticsearch"
-#        # Add to list for elasticsearch configuration
-#        datapath_config+="${disk_id}/elasticsearch/data,"
-#    done
-#    #Remove the extra trailing comma
-#    datapath_config="${datapath_config%?}"
-#else
-#    echo "Data disk directory not found, cannot set up storage for ElasticSearch service"
-#    exit 4
-#fi
-#log "disk has been set"
+datapath_config=""
+if [ -d '/datadisks' ]; then
+    for disk_id in `find /datadisks/ -mindepth 1 -maxdepth 1 -type d`
+    do
+        # Configure disk permissions and folder for storage
+        # We rely on ES default user name & group (elasticsearch)
+        mkdir -p "${disk_id}/elasticsearch/data"
+        chown -R elasticsearch:elasticsearch "${disk_id}/elasticsearch"
+        chmod 755 "${disk_id}/elasticsearch"
+        # Add to list for elasticsearch configuration
+        datapath_config+="${disk_id}/elasticsearch/data,"
+    done
+    #Remove the extra trailing comma
+    datapath_config="${datapath_config%?}"
+else
+    echo "Data disk directory not found, cannot set up storage for ElasticSearch service"
+    exit 4
+fi
+log "disk has been set"
 
 #configure elsticsearch
 log "begin to configure elasticsearch"
