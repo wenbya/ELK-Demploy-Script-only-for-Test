@@ -72,9 +72,9 @@ sudo bin/plugin install lmenezes/elasticsearch-kopf
 sudo bin/plugin install mobz/elasticsearch-head
 sudo bin/plugin install license
 sudo bin/plugin install watcher
+#install marvel part0
 sudo bin/plugin install marvel-agent
 cd /opt/kibana
-sudo bin/kibana plugin --install elasticsearch/marvel/2.1.0
 #install kibana
 log "begin to install kibana"
 echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
@@ -89,5 +89,6 @@ sudo echo "server.host: '$VMNAME'" >> /opt/kibana/config/kibana.yml
 sudo echo "elasticsearch.url: 'http://$VMNAME:9200'" >> /opt/kibana/config/kibana.yml
 sudo update-rc.d kibana defaults 96 9
 sudo service kibana start
-
+#install marvel part1 . marvel need to be installed after kibana was done.
+sudo bin/kibana plugin --install elasticsearch/marvel/2.1.0
 log "kibana has been installed"
