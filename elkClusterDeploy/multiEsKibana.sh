@@ -129,9 +129,9 @@ install_plugins()
 	sudo bin/plugin install mobz/elasticsearch-head
 	sudo bin/plugin install license
 	sudo bin/plugin install watcher
-	sudo bin/plugin install marvel-agent
-	cd /opt/kibana
-	sudo bin/kibana plugin --install elasticsearch/marvel/2.1.0
+	#sudo bin/plugin install marvel-agent
+	#cd /opt/kibana
+	#sudo bin/kibana plugin --install elasticsearch/marvel/2.1.0
 	log "elasticsearch plugin has been installed"
 }
 ########################################## Kibana functions ##################################################
