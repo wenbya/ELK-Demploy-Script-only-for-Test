@@ -74,7 +74,7 @@ sudo bin/plugin install license
 sudo bin/plugin install watcher
 #install marvel part0
 sudo bin/plugin install marvel-agent
-cd /opt/kibana
+cd 
 #install kibana
 log "begin to install kibana"
 echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
