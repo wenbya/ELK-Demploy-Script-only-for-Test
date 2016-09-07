@@ -100,6 +100,8 @@ configure_elasticsearch()
 	echo "bootstrap.mlockall: true" >> /etc/elasticsearch/elasticsearch.yml
 	echo "node.master: true" >> /etc/elasticsearch/elasticsearch.yml
 	echo "node.data: true" >> /etc/elasticsearch/elasticsearch.yml
+        echo "network.host: ${HOSTNAME}" >> /etc/elasticsearch/elasticsearch.yml
+        echo "http.port: 9200" >> /etc/elasticsearch/elasticsearch.yml
 	log "elastcisearch.yml has been modified"
 }
 ####### set elasticsearch heap Memory/2
