@@ -106,7 +106,7 @@ configure_elasticsearch()
 optimizing_elasticsearchHeap()
 {	
 	es_heap_size=$(free -m |grep Mem | awk '{if ($2/2 >31744)  print 31744;else print $2/2;}')
-	printf "\nES_HEAP_SIZE=%sm\n" $es_heap_size >> /etc/default/elasticseach
+	printf "\nES_HEAP_SIZE=%sm\n" $es_heap_size >> /etc/default/elasticsearch
 	printf "MAX_LOCKED_MEMORY=unlimited\n" >> /etc/default/elasticsearch
 	echo "elasticsearch - nofile 65536" >> /etc/security/limits.conf
 	echo "elasticsearch - memlock unlimited" >> /etc/security/limits.conf
