@@ -86,20 +86,20 @@ configure_elasticsearch()
 	mkdir /opt/elk
 	cd /opt/elk
 	echo "#################### Configuring ES service ####################"
-	echo "cluster.name: $cluster_name" >> /root/elasticsearch.yml
-	echo "node.name: ${HOSTNAME}" >> /root/elasticsearch.yml
-	echo "gateway.expected_nodes: ${cluster_node_count}" >> /root/elasticsearch.yml
-	echo 'discovery.zen.ping.multicast.enabled: false' >> /root/elasticsearch.yml
+	echo "cluster.name: $cluster_name" >> /etc/elasticsearch/elasticsearch.yml
+	echo "node.name: ${HOSTNAME}" >> /etc/elasticsearch/elasticsearch.yml
+	echo "gateway.expected_nodes: ${cluster_node_count}" >> /etc/elasticsearch/elasticsearch.yml
+	echo 'discovery.zen.ping.multicast.enabled: false' >> /etc/elasticsearch/elasticsearch.yml
 	discovery_endpoints=$(get_discovery_endpoints $starting_discovery_endpoint $cluster_node_count)
 	echo "Setting ES discovery endpoints to $discovery_endpoints"
-	echo "discovery.zen.ping.unicast.hosts: $discovery_endpoints" >> /root/elasticsearch.yml
-	echo "path.data: $datapath_config" >> /root/elasticsearch.yml
+	echo "discovery.zen.ping.unicast.hosts: $discovery_endpoints" >> /etc/elasticsearch/elasticsearch.yml
+	echo "path.data: $datapath_config" >> /etc/elasticsearch/elasticsearch.yml
 	declare -i minimum_master_nodes=$(((cluster_node_count / 2) + 1))
-	echo "discovery.zen.minimum_master_nodes: $minimum_master_nodes" >> /root/elasticsearch.yml
-	echo "gateway.recover_after_time: 1m" >> /root/elasticsearch.yml
-	echo "bootstrap.mlockall: true" >> /root/elasticsearch.yml
-	echo "node.master: true" >> /root/elasticsearch.yml
-	echo "node.data: true" >> /root/elasticsearch.yml
+	echo "discovery.zen.minimum_master_nodes: $minimum_master_nodes" >> /etc/elasticsearch/elasticsearch.yml
+	echo "gateway.recover_after_time: 1m" >> /etc/elasticsearch/elasticsearch.yml
+	echo "bootstrap.mlockall: true" >> /etc/elasticsearch/elasticsearch.yml
+	echo "node.master: true" >> /etc/elasticsearch/elasticsearch.yml
+	echo "node.data: true" >> /etc/elasticsearch/elasticsearch.yml
 	log "elastcisearch.yml has been modified"
 }
 ####### set elasticsearch heap Memory/2
