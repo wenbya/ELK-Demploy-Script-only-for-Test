@@ -86,8 +86,8 @@ configure_logstash()
 start_logstash()
 {
 	log "Configure start up service"
+	sudo service logstash restart
 	sudo update-rc.d logstash defaults 96 9
-	sudo service logstash start
 }
 
 ################################# Run the functions #############################
