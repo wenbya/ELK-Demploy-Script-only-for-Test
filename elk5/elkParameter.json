@@ -6,7 +6,7 @@
     "adminUserName": { "value": "xxxxx" },
     "adminPassword": { "value": "xxxxx" },
     "dnsNameForPublicIP": { "value": "xxxxx" },
-	  "vmName": {"value": "xxxxx"},
-	  "encodedConfigString": {"value": "aW5wdXQgIHsgICBzdGRpbiB7fSB9IG91dHB1dCB7ICAgc3Rkb3V0IHsgY29kZWMgPT4gcnVieWRlYnVnIH0gfQ=="}
+    "vmName": {"value": "xxxxx"},
+    "encodedConfigString": {"value": "aW5wdXQgIHsgICBzdGRpbiB7fSB9IG91dHB1dCB7ICAgc3Rkb3V0IHsgY29kZWMgPT4gcnVieWRlYnVnIH0gfQ=="}
   }
 }
