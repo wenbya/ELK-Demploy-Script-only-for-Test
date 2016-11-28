@@ -196,7 +196,7 @@
                 "typeHandlerVersion": "1.2",
                 "settings": {
                     "fileUris": [ "https://raw.githubusercontent.com/wenboyang214/ELK-Demploy-Script-only-for-Test/master/elk5/elk.sh" ],
-                    "commandToExecute":  "[concat('sudo bash logstash_install.sh -n ', parameters('vmName'),'-e',parameters('encodedConfigString'))]"
+                    "commandToExecute":  "[concat('sudo bash elk.sh -n ', parameters('vmName'),'-e',parameters('encodedConfigString'))]"
                 }
             }
         }
