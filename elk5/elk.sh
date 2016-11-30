@@ -60,8 +60,8 @@ log "elasticsearch has been installed"
 ###
 configureBoot_elasticsearch()
 {
-mkdir /opt/elk
-cd /opt/elk
+#mkdir /opt/elk
+#cd /opt/elk
 # configure the elasticsearch
 #sudo echo "bootstrap.mlockall: true" >> /etc/elasticsearch/elasticsearch.yml   ##2.* version 
 sudo echo "bootstrap.memory_lock: true" >> /etc/elasticsearch/elasticsearch.yml
